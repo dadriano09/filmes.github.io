@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado da Busca</title>
+</head>
+<body>
+    <h1>Resultados da busca por "{{ query }}"</h1>
+
+    {% if resultados %}
+        <ul>
+        {% for filme in resultados %}
+            <li>
+                <a href="{{ filme.link }}" target="_blank">{{ filme.titulo }}</a>
+    
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum resultado encontrado.</p>
+    {% endif %}
+
+    <h2>Realizar outra busca</h2>
+    <form action="/buscar" method="GET">
+        <input type="text" name="q" value="{{ query }}" placeholder="Digite o nome do filme">
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>
